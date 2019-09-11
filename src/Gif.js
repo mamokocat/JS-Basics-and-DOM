@@ -12,7 +12,6 @@ const Gif = {
     fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2`)
       .then((responce) => responce.json()).then((gif) => {
         const gifObject = gif.data;
-        console.dir(gifObject);
         gifContainer.innerHTML += `<video src="${gifObject.images.original.mp4}" autoplay loop/><br/>`;
         gifContainer.innerHTML += `<div> <strong>Title:</strong> ${gifObject.title} <br/>`;
 
@@ -24,11 +23,12 @@ const Gif = {
         gifContainer.innerHTML += '<input type="button" id="back-btn" value="Back to search" class="btn btn-danger mt-4" >';
 
         document.getElementById('back-btn').addEventListener('click', () => {
-          if (window.history.length === 0) {
+          if (window.history.length === 2) {
             window.history.pushState({}, '', '/');
             router();
+          } else {
+            window.history.back();
           }
-          window.history.back();
         });
       });
   },

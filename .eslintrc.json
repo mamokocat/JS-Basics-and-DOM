@@ -24,6 +24,7 @@
         "comma-dangle": "off",
         "no-unused-expressions": "off",
         "default-case": "off",
-        "import/no-cycle": "off"
+        "import/no-cycle": "off",
+        "no-plusplus": "off"
     }
 }
