@@ -15,8 +15,6 @@
     "webpack": "^4.39.3"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "express-spa": "0.0.2",
     "local-web-server": "^3.0.7"
   }
 }

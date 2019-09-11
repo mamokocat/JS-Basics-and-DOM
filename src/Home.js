@@ -14,11 +14,7 @@ const Home = {
     const searchInput = document.getElementById('search-input');
 
     searchInput.addEventListener('keydown', () => {
-      if (searchInput.value.length > 1) {
-        searchButton.disabled = false;
-      } else {
-        searchButton.disabled = true;
-      }
+      searchButton.disabled = !(searchInput.value.length > 1);
     });
 
     searchButton.addEventListener('click', () => {

@@ -22,9 +22,6 @@
         "no-unused-vars": "off",
         "import/extensions": "off",
         "comma-dangle": "off",
-        "no-unused-expressions": "off",
-        "default-case": "off",
-        "import/no-cycle": "off",
-        "no-plusplus": "off"
+        "import/no-cycle": "off"
     }
 }

@@ -26,19 +26,16 @@ const Search = {
     document.getElementById('search-input').addEventListener('keydown', () => {
       const searchButton = document.getElementById('search-btn');
       const searchInput = document.getElementById('search-input');
-      if (searchInput.value.length > 1) {
-        searchButton.disabled = false;
-      } else {
-        searchButton.disabled = true;
-      }
+      searchButton.disabled = !(searchInput.value.length > 1);
     });
 
     fetch(`https://api.giphy.com/v1/gifs/search?api_key=Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2&q=
       ${searchInputValue}&limit=50&offset=0&rating=G&lang=en`)
-      .then((responce) => responce.json()).then((gifs) => {
+      .then((responce) => responce.json())
+      .then((gifs) => {
         let img = '';
 
-        for (let key = 0; key < 10; key++) {
+        for (let key = 0; key < 10; key += 1) {
           img += `<a id="gif" href="/gif/${gifs.data[key].id}"><img src=${gifs.data[key].images.fixed_height_small.url} 
                       class="m-1 img-thumbnail"/></a>`;
         }
@@ -66,10 +63,11 @@ const Search = {
           searchInputValue = searchInputValue.split('%20').join(' ');
           fetch(`https://api.giphy.com/v1/gifs/search?api_key=Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2&q=
             ${searchInputValue}&limit=50&offset=${gifsAmount}&rating=G&lang=en`)
-            .then((responce) => responce.json()).then((moreGifs) => {
+            .then((responce) => responce.json())
+            .then((moreGifs) => {
               let moreImg = '';
 
-              for (let key = 0; key < 10; key++) {
+              for (let key = 0; key < 10; key += 1) {
                 moreImg += `<a id="gif" href="/gif/${moreGifs.data[key].id}"><img src=
                   ${moreGifs.data[key].images.fixed_height_small.url} class="m-1 img-thumbnail"/></a>`;
               }
