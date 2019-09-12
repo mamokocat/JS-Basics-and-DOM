@@ -1,5 +1,5 @@
 import Home from './Home.js';
-import api from './api.js';
+import getGifs from './api.js';
 import router from './app.js';
 
 const Search = {
@@ -24,7 +24,7 @@ const Search = {
 
     document.getElementById('searchRequestValue').innerHTML = searchInputValue;
 
-    const gifs = await api.getGifs({ searchInputValue });
+    const gifs = await getGifs({ searchInputValue });
 
     for (let key = 0; key < gifs.data.length; key += 1) {
       html += `<a id="gif" href="/gif/${gifs.data[key].id}"><img src=${gifs.data[key].images.fixed_height_small.url} 

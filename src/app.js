@@ -2,7 +2,7 @@ import Navbar from './Navbar.js';
 import Home from './Home.js';
 import Search from './Search.js';
 import Gif from './Gif.js';
-import api from './api.js';
+import { getGifs, getMoreGifs, getGif } from './api.js';
 
 const routes = {
   '/': Home,
@@ -45,7 +45,7 @@ const router = async (urlParameter) => {
       let searchInputValue = window.location.search.split('=')[1];
       searchInputValue = searchInputValue.split('%20').join(' ');
 
-      const moreGifs = await api.getMoreGifs({ searchInputValue, gifsAmount });
+      const moreGifs = await getMoreGifs({ searchInputValue, gifsAmount });
       let moreImg = '';
 
       for (let key = 0; key < moreGifs.data.length; key += 1) {
