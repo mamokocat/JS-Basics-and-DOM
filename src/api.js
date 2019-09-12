@@ -1,19 +1,31 @@
-export async function getGifs(searchInputValue) {
-  const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2&q=
-  ${searchInputValue}&limit=50&offset=0&rating=G&lang=en`);
+function getQuery(urlParams) {
+  let url = '';
+  url += urlParams.id || 'search';
+  url += '?api_key=Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2';
+  if (urlParams.id) {
+    return url;
+  }
+  url += `&q=${urlParams.searchInputValue}&limit=`;
+  url += `&limit=${urlParams.limit || '15'}`;
+  url += `&offset=${urlParams.gifsAmount || '0'}`;
+  url += '&rating=G&lang=en';
+  return url;
+}
+
+export async function getGifs(urlParams) {
+  const response = await fetch(`https://api.giphy.com/v1/gifs/${getQuery(urlParams)}`);
   const gifsList = response.json();
   return gifsList;
 }
 
-export async function getMoreGifs(searchInputValue, gifsAmount) {
-  const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2&q=
-  ${searchInputValue}&limit=50&offset=${gifsAmount}&rating=G&lang=en`);
+export async function getMoreGifs(urlParams) {
+  const response = await fetch(`https://api.giphy.com/v1/gifs/${getQuery(urlParams)}`);
   const gifsList = response.json();
   return gifsList;
 }
 
-export async function getGif(id) {
-  const response = await fetch(`https://api.giphy.com/v1/gifs/${id}?api_key=Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2`);
+export async function getGif(urlParams) {
+  const response = await fetch(`https://api.giphy.com/v1/gifs/${getQuery(urlParams)}`);
   const gif = response.json();
   return gif;
 }

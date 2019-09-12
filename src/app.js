@@ -25,7 +25,7 @@ const router = async (urlParameter) => {
 
   const page = routes[request] ? routes[request] : Gif;
 
-  pageContainer.innerHTML += await page.render(urlParameter) || '';
+  pageContainer.innerHTML += await page.render() || '';
 
   const gif = document.getElementById('gif');
   const moreButton = document.getElementById('more-btn');
@@ -45,10 +45,10 @@ const router = async (urlParameter) => {
       let searchInputValue = window.location.search.split('=')[1];
       searchInputValue = searchInputValue.split('%20').join(' ');
 
-      const moreGifs = await api.getMoreGifs(searchInputValue, gifsAmount);
+      const moreGifs = await api.getMoreGifs({ searchInputValue, gifsAmount });
       let moreImg = '';
 
-      for (let key = 0; key < 10; key += 1) {
+      for (let key = 0; key < moreGifs.data.length; key += 1) {
         moreImg += `<a id="gif" href="/gif/${moreGifs.data[key].id}"><img src=
               ${moreGifs.data[key].images.fixed_height_small.url} class="m-1 img-thumbnail"/></a>`;
       }

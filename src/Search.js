@@ -21,18 +21,17 @@ const Search = {
       searchForm.innerHTML += `<h5 id="search-result-label" class="mt-3">
         Search result for "<span id="searchRequestValue"></span>":<br/></h5>`;
     }
+
     document.getElementById('searchRequestValue').innerHTML = searchInputValue;
 
-    const gifs = await api.getGifs(searchInputValue);
+    const gifs = await api.getGifs({ searchInputValue });
 
-    for (let key = 0; key < 10; key += 1) {
+    for (let key = 0; key < gifs.data.length; key += 1) {
       html += `<a id="gif" href="/gif/${gifs.data[key].id}"><img src=${gifs.data[key].images.fixed_height_small.url} 
                   class="m-1 img-thumbnail"/></a>`;
     }
 
-
     html += '<div id="gif-container"></div>';
-
 
     if (!document.getElementById('more-btn')) {
       html += `<br/><input type="button" id="more-btn" 

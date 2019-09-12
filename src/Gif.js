@@ -9,7 +9,7 @@ const Gif = {
 
     let html = '';
 
-    const gif = await api.getGif(id);
+    const gif = await api.getGif({ id });
     const gifObject = gif.data;
     html += `<video src="${gifObject.images.original.mp4}" autoplay loop></video><br/>`;
     html += `<div> <strong>Title:</strong> ${gifObject.title} <br/>`;
