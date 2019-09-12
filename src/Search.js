@@ -30,10 +30,9 @@ const Search = {
                   class="m-1 img-thumbnail"/></a>`;
     }
 
-    const gifContainer = document.createElement('div');
-    gifContainer.setAttribute('id', 'gif-container');
-    gifContainer.textContent = '<h6>...and more!...</h6>';
-    document.getElementById('search-result').appendChild(gifContainer);
+
+    html += '<div id="gif-container"></div>';
+
 
     if (!document.getElementById('more-btn')) {
       html += `<br/><input type="button" id="more-btn" 
