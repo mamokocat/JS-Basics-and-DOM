@@ -15,7 +15,6 @@ const Home = {
     const searchInput = document.getElementById('search-input');
 
     searchButton.addEventListener('click', () => {
-      console.log('search');
       window.history.pushState({}, '', Parse.getSearchQuery(searchInput.value));
       router();
     });

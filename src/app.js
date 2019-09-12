@@ -12,6 +12,7 @@ const routes = {
   '/gif': Gif
 };
 
+
 const router = async () => {
   const header = document.getElementById('header-container');
   const pageContainer = document.getElementById('search-result');
