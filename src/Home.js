@@ -1,3 +1,4 @@
+import * as Parse from './Utils.js';
 import router from './app.js';
 
 const Home = {
@@ -13,13 +14,13 @@ const Home = {
     const searchButton = document.getElementById('search-btn');
     const searchInput = document.getElementById('search-input');
 
-    searchInput.addEventListener('keydown', () => {
-      searchButton.disabled = !(searchInput.value.length > 1);
-    });
-
     searchButton.addEventListener('click', () => {
-      window.history.pushState({}, '', `/search?q=${searchInput.value}`);
-      router(searchInput);
+      console.log('search');
+      window.history.pushState({}, '', Parse.getSearchQuery(searchInput.value));
+      router();
+    });
+    searchInput.addEventListener('keydown', () => {
+      searchButton.disabled = searchInput.value.length < 1;
     });
   }
 };

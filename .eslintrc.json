@@ -21,7 +21,6 @@
         "guard-for-in": "off",
         "no-unused-vars": "off",
         "import/extensions": "off",
-        "comma-dangle": "off",
-        "import/no-cycle": "off"
+        "comma-dangle": "off"
     }
 }
