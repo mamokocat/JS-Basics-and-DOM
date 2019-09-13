@@ -1,15 +1,13 @@
-export function getApiQuery(urlParams) {
+export function getApiQuery(queryParams) {
   let url = '?';
-  if (urlParams.id) {
-    return url;
-  }
-  Object.entries(urlParams).forEach(([key, value]) => {
-    url += `&${key}=${value}`;
+  const params = queryParams;
+  params.api_key = 'Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2';
+  Object.entries(params).forEach(([key, value]) => {
+    url += `${key}=${value}&`;
   });
 
   return url;
 }
-
 
 export function getSearchQuery(searchInput) {
   return `/search?q=${encodeURI(searchInput)}`;

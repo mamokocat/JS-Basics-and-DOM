@@ -1,6 +1,6 @@
-import Home from './Home.js';
 import * as Gifs from './api.js';
 import * as Parse from './Utils.js';
+import Home from './Home.js';
 
 
 const Search = {
@@ -29,19 +29,12 @@ const Search = {
 
     document.getElementById('search-result-name').innerHTML = `${searchInputValue}":`;
 
-    const gifs = await Gifs.getGifs({
-      api_key: 'Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2',
-      q: searchInputValue,
-      limit: '15',
-      offset: '0',
-      rating: 'G',
-      lang: 'en'
-    });
+    const gifs = await Gifs.getGifs(searchInputValue);
 
-    for (let key = 0; key < gifs.data.length; key += 1) {
-      html += `<a id="gif"  href="/gif/${gifs.data[key].id}" ><img src=${gifs.data[key].images.fixed_height_small.url} 
-        alt="${gifs.data[key].title}" class="m-1 img-thumbnail"/></a>`;
-    }
+    html += gifs.data.reduce((accumulator, currentValue) => `${accumulator}<a id="gif" href="/gif/${currentValue.id}" >
+                           <img src=${currentValue.images.fixed_height_small.url} 
+                           alt="${currentValue.title}" class="m-1 img-thumbnail"/></a>`, '');
+
 
     html += '<div id="gif-container"></div>';
 
@@ -56,7 +49,7 @@ const Search = {
       searchButton.disabled = !(searchInput.value.length > 1);
     });
     return html;
-  }
+  },
 };
 
 export default Search;

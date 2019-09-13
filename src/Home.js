@@ -21,7 +21,7 @@ const Home = {
     searchInput.addEventListener('keydown', () => {
       searchButton.disabled = searchInput.value.length < 1;
     });
-  }
+  },
 };
 
 export default Home;

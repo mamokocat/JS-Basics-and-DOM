@@ -9,7 +9,7 @@ const routes = {
   '/': Home,
   '/index.html': Home,
   '/search': Search,
-  '/gif': Gif
+  '/gif': Gif,
 };
 
 
@@ -22,7 +22,7 @@ const router = async () => {
   }
 
   const request = window.location.pathname;
-
+  console.log(request);
   const page = routes[request] ? routes[request] : Gif;
 
   pageContainer.innerHTML = await page.render() || '';
@@ -43,15 +43,8 @@ const router = async () => {
     moreButton.addEventListener('click', async () => {
       const gifsAmount = document.getElementsByTagName('img').length;
       const searchInputValue = Parse.parseSearchQuery();
+      const moreGifs = await Gifs.getMoreGifs({ searchInputValue, gifsAmount });
 
-      const moreGifs = await Gifs.getMoreGifs({
-        api_key: 'Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2',
-        q: searchInputValue,
-        limit: '15',
-        offset: gifsAmount,
-        rating: 'G',
-        lang: 'en'
-      });
       let moreImg = '';
 
       for (let key = 0; key < moreGifs.data.length; key += 1) {

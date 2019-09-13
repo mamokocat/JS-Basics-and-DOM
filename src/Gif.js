@@ -7,9 +7,7 @@ const Gif = {
     const id = pathNameParams[pathNameParams.length - 1];
     let html = '';
 
-    const gif = await Gifs.getGif(id, {
-      api_key: 'Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2',
-    });
+    const gif = await Gifs.getGif(id, {});
     const gifObject = gif.data;
     html += `<video src="${gifObject.images.original.mp4}" autoplay loop></video><br/>`;
     html += `<div> <strong>Title:</strong> ${gifObject.title} <br/>`;
@@ -22,7 +20,7 @@ const Gif = {
     html += '<input type="button" id="back-btn" value="Back to search" class="btn btn-danger mt-4" >';
 
     return html;
-  }
+  },
 };
 
 export default Gif;
