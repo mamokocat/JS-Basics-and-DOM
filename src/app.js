@@ -21,7 +21,6 @@ const router = async () => {
   }
 
   const request = Parse.parsePathname(window.location.pathname);
-  console.log(request);
   const page = routes[request] ? routes[request] : Gif;
 
   pageContainer.innerHTML = await page.render() || '';
