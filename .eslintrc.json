@@ -16,11 +16,6 @@
     },
     "rules": {
         "linebreak-style": "off",
-        "no-restricted-syntax": "off",
-        "no-prototype-builtins": "off",
-        "guard-for-in": "off",
-        "no-unused-vars": "off",
-        "import/extensions": "off",
-        "comma-dangle": "off"
+        "import/extensions": "off"
     }
 }
