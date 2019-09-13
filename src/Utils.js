@@ -18,4 +18,11 @@ export function parseSearchQuery() {
   return value.split('=')[1];
 }
 
-export default { getApiQuery, getSearchQuery, parseSearchQuery };
+export function parsePathname(pathname) {
+  const paths = pathname.split('/');
+  return paths[paths.length - 1];
+}
+
+export default {
+  getApiQuery, getSearchQuery, parseSearchQuery, parsePathname,
+};

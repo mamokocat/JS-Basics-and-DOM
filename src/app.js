@@ -6,10 +6,9 @@ import * as Gifs from './api.js';
 import * as Parse from './Utils.js';
 
 const routes = {
-  '/': Home,
-  '/index.html': Home,
-  '/search': Search,
-  '/gif': Gif,
+  '': Home,
+  search: Search,
+  gif: Gif,
 };
 
 
@@ -21,7 +20,7 @@ const router = async () => {
     header.innerHTML = await Navbar.render();
   }
 
-  const request = window.location.pathname;
+  const request = Parse.parsePathname(window.location.pathname);
   console.log(request);
   const page = routes[request] ? routes[request] : Gif;
 
