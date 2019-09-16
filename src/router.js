@@ -1,27 +1,41 @@
-import createPage from './app.js';
-import * as Gifs from './api.js';
+import Navbar from './Navbar.js';
 import * as Parse from './Utils.js';
 
-const router = async (url) => {
-  window.history.pushState({}, '', url);
-  createPage();
+class RouteHandler {
+  constructor(_routes) {
+    this.routes = _routes;
+  }
 
-  const gif = document.getElementById('gif');
+  static createRoute(url) {
+    window.history.pushState({}, '', url);
+    this.goToRoute();
+  }
+
+  async goToRoute() {
+    const header = document.getElementById('header-container');
+    const pageContainer = document.getElementById('page-container');
+    if (!header.innerHTML) {
+      header.innerHTML = await Navbar.render();
+    }
+
+    const request = Parse.parsePathname(window.location.pathname);
+    const page = this.routes[request] ? this.routes[request] : this.routes.error;
+    pageContainer.innerHTML = '';
+    pageContainer.appendChild(await page.render());
+  }
+}
+
+export default RouteHandler;
+
+/*   const gif = document.getElementById('gif');
   const moreButton = document.getElementById('more-btn');
   const backButton = document.getElementById('back-btn');
-  const searchButton = document.getElementById('search-btn');
-  const searchInput = document.getElementById('search-input');
-
-  if (searchButton) {
-    searchButton.addEventListener('click', () => {
-      router(Parse.getSearchQuery(searchInput.value));
-    });
-  }
 
   if (gif) {
     gif.addEventListener('click', (event) => {
       event.preventDefault();
-      router(gif.href);
+      window.history.pushState({}, '', gif.href);
+      router();
     });
   }
 
@@ -34,9 +48,9 @@ const router = async (url) => {
       let moreImg = '';
 
       for (let key = 0; key < moreGifs.data.length; key += 1) {
-        moreImg += `<a id="gif" href="/gif/${moreGifs.data[key].id}"><img 
-              src=${moreGifs.data[key].images.fixed_height_small.url} 
-              alt="${moreGifs.data[key].title}" 
+        moreImg += `<a id="gif" href="/gif/${moreGifs.data[key].id}"><img
+              src=${moreGifs.data[key].images.fixed_height_small.url}
+              alt="${moreGifs.data[key].title}"
               class="m-1 img-thumbnail"/></a>`;
       }
 
@@ -48,22 +62,10 @@ const router = async (url) => {
   if (backButton) {
     backButton.addEventListener('click', () => {
       if (!document.referrer) {
-        router('/');
+        window.history.pushState({}, '', '/');
+        router();
       } else {
         window.history.back();
       }
     });
-  }
-};
-
-
-window.addEventListener('load', () => {
-  console.log('1');
-  router('/');
-});
-
-window.onpopstate = () => {
-  router();
-};
-
-export default router;
+  } */

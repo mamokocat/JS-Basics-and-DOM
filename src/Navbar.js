@@ -5,7 +5,6 @@ const Navbar = {
 </nav>`;
     return view;
   },
-  after_render: async () => {}
 };
 
 export default Navbar;
