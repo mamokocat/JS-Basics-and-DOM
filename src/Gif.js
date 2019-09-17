@@ -6,7 +6,7 @@ const Gif = {
   render: async () => {
     const id = Parse.getGifUrl(window.location.pathname);
     const gifContainer = document.createElement('div');
-    const gif = await Gifs.getGif(id, {});
+    const gif = await Gifs.getGif(id, { api_key: 'Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2' });
     const gifObject = gif.data;
 
     gifContainer.innerHTML += `<video src="${gifObject.images.original.mp4}" autoplay loop muted></video>`;

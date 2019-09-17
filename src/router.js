@@ -11,7 +11,7 @@ class RouteHandler {
     RouteHandler.routes = _routes;
   }
 
-  static async createPage(isFirstEntry) {
+  static async createPage() {
     const header = document.getElementById('header-container');
     const pageContainer = document.getElementById('page-container');
     if (!header.innerHTML) {
@@ -21,7 +21,7 @@ class RouteHandler {
     const request = Parse.getResourse(window.location.pathname);
     const page = this.routes[request] ? this.routes[request] : this.routes.error;
     pageContainer.innerHTML = '';
-    const newPage = await page.render(isFirstEntry);
+    const newPage = await page.render();
     pageContainer.appendChild(newPage);
   }
 

@@ -1,5 +1,5 @@
 import RouteHandler from './router.js';
-import * as Parse from './Parse.js';
+import * as Gifs from './api.js';
 
 const SearchForm = {
   render: (text, label) => {
@@ -27,7 +27,7 @@ const SearchForm = {
     searchForm.appendChild(searchButton);
 
     searchButton.addEventListener('click', () => {
-      RouteHandler.goToRoute(Parse.getSearchQuery(searchInput.value));
+      RouteHandler.goToRoute(Gifs.getSearchQuery(searchInput.value));
     });
 
     if (label) {
