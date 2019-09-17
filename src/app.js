@@ -14,7 +14,7 @@ const routes = {
 RouteHandler.addRoutes(routes);
 
 window.onload = () => {
-  RouteHandler.goToRoute(document.URL, true);
+  RouteHandler.goToRoute(document.URL);
 };
 
 window.onpopstate = () => {
