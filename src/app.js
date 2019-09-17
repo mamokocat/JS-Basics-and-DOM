@@ -11,14 +11,12 @@ const routes = {
   error: Error404,
 };
 
-const routerHandler = new RouteHandler(routes);
+RouteHandler.addRoutes(routes);
 
 window.onload = () => {
-  routerHandler.goToRoute();
+  RouteHandler.createRoute(document.URL, true);
 };
 
 window.onpopstate = () => {
-  routerHandler.goToRoute();
+  RouteHandler.goToRoute();
 };
-
-export default routerHandler;

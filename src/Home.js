@@ -1,7 +1,7 @@
 import RouteHandler from './router.js';
 
 const Home = {
-  render: (text) => {
+  render: (text, label) => {
     const searchForm = document.createElement('div');
     searchForm.setAttribute('id', 'search-form');
     searchForm.style.display = 'block';
@@ -14,7 +14,7 @@ const Home = {
     searchInput.setAttribute('type', 'text');
     searchInput.setAttribute('id', 'search-input');
     searchInput.setAttribute('class', 'form-control');
-    searchInput.setAttribute('value', text || 'Type here to search');
+    searchInput.setAttribute('value', text || '');
     searchForm.appendChild(searchInput);
 
     const searchButton = document.createElement('input');
@@ -28,6 +28,10 @@ const Home = {
     searchButton.addEventListener('click', () => {
       RouteHandler.createRoute(`/search?q=${searchInput.value}`);
     });
+
+    if (label) {
+      searchForm.appendChild(label);
+    }
 
     searchInput.addEventListener('keydown', () => {
       searchButton.disabled = searchInput.value.length < 1;

@@ -8,25 +8,19 @@ const Search = {
     const searchPage = document.createElement('div');
     searchPage.setAttribute('id', 'search-result');
     const searchInputValue = Parse.parseSearchQuery();
-    searchPage.appendChild(Home.render(searchInputValue));
 
-    const pp = searchPage.getElementById('search-input');
-    pp.setAttribute('value', searchInputValue);
-    
-    if (!document.getElementById('search-result-label')) {
-      const searchLabel = document.createElement('h5');
-      searchLabel.setAttribute('id', 'search-result-label');
-      searchLabel.setAttribute('class', 'mt-3');
-      searchLabel.innerHTML = 'Search result for "';
 
-      const searchName = document.createElement('span');
-      searchName.setAttribute('id', 'search-result-name');
-      searchLabel.appendChild(searchName);
+    const searchLabel = document.createElement('h5');
+    searchLabel.setAttribute('id', 'search-result-label');
+    searchLabel.setAttribute('class', 'mt-3');
+    searchLabel.innerHTML = 'Search result for "';
 
-      searchPage.getElementById('search-form').appendChild(searchLabel);
-    }
+    const searchName = document.createElement('span');
+    searchName.setAttribute('id', 'search-result-name');
+    searchName.innerText = searchInputValue;
+    searchLabel.appendChild(searchName);
 
-    searchPage.getElementById('search-result-name').innerHTML = `${searchInputValue}":`;
+    searchPage.appendChild(Home.render(searchInputValue, searchLabel));
 
     const searchResponce = document.createElement('div');
     searchResponce.setAttribute('class', 'mt-3');
@@ -43,6 +37,10 @@ const Search = {
       gifImg.setAttribute('class', 'm-1 img-thumbnail');
       gifLink.appendChild(gifImg);
 
+      gifLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        RouteHandler.createRoute(gifLink.href);
+      });
       searchResponce.appendChild(gifLink);
     });
 
@@ -55,25 +53,26 @@ const Search = {
     moreButton.setAttribute('class', 'btn btn-success mt-2 mb-4');
     searchPage.appendChild(moreButton);
 
-    const gif = searchPage.getElementById('gif');
-
-    gif.addEventListener('click', (event) => {
-      event.preventDefault();
-      RouteHandler.createRoute(gif.href);
-    });
-
-
     moreButton.addEventListener('click', async () => {
       const gifsAmount = document.getElementsByTagName('img').length;
       const moreGifs = await Gifs.getMoreGifs({ searchInputValue, gifsAmount });
-      let moreImg = '';
-      for (let key = 0; key < moreGifs.data.length; key += 1) {
-        moreImg += `<a id="gif" href="/gif/${moreGifs.data[key].id}"><img 
-                src=${moreGifs.data[key].images.fixed_height_small.url} 
-                alt="${moreGifs.data[key].title}" 
-                class="m-1 img-thumbnail"/></a>`;
-      }
-      document.getElementById('gif-container').innerHTML += moreImg;
+      moreGifs.data.forEach((gif) => {
+        const gifLink = document.createElement('a');
+        gifLink.setAttribute('id', 'gif');
+        gifLink.setAttribute('href', `/gif/${gif.id}`);
+
+        const gifImg = document.createElement('img');
+        gifImg.setAttribute('src', `${gif.images.fixed_height_small.url}`);
+        gifImg.setAttribute('alt', `${gif.title}`);
+        gifImg.setAttribute('class', 'm-1 img-thumbnail');
+        gifLink.appendChild(gifImg);
+
+        gifLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          RouteHandler.createRoute(gifLink.href);
+        });
+        searchResponce.appendChild(gifLink);
+      });
     });
 
     return searchPage;

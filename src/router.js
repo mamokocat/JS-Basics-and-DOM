@@ -2,16 +2,17 @@ import Navbar from './Navbar.js';
 import * as Parse from './Utils.js';
 
 class RouteHandler {
-  constructor(_routes) {
-    this.routes = _routes;
+  static createRoute(currentUrl, isFirstEntry) {
+    console.log(`router: ${isFirstEntry}`);
+    window.history.pushState({}, '', currentUrl);
+    RouteHandler.goToRoute(isFirstEntry);
   }
 
-  static createRoute(url) {
-    window.history.pushState({}, '', url);
-    this.goToRoute();
+  static addRoutes(_routes) {
+    RouteHandler.routes = _routes;
   }
 
-  async goToRoute() {
+  static async goToRoute(isFirstEntry) {
     const header = document.getElementById('header-container');
     const pageContainer = document.getElementById('page-container');
     if (!header.innerHTML) {
@@ -21,7 +22,8 @@ class RouteHandler {
     const request = Parse.parsePathname(window.location.pathname);
     const page = this.routes[request] ? this.routes[request] : this.routes.error;
     pageContainer.innerHTML = '';
-    pageContainer.appendChild(await page.render());
+    const newPage = await page.render(isFirstEntry);
+    pageContainer.appendChild(newPage);
   }
 }
 
