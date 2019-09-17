@@ -1,6 +1,6 @@
 import * as Gifs from './api.js';
 import * as Parse from './Utils.js';
-import Home from './Home.js';
+import SearchForm from './SearchForm.js';
 import RouteHandler from './router.js';
 
 const Search = {
@@ -20,7 +20,7 @@ const Search = {
     searchName.innerText = searchInputValue;
     searchLabel.appendChild(searchName);
 
-    searchPage.appendChild(Home.render(searchInputValue, searchLabel));
+    searchPage.appendChild(SearchForm.render(searchInputValue, searchLabel));
 
     const searchResponce = document.createElement('div');
     searchResponce.setAttribute('class', 'mt-3');

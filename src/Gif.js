@@ -9,17 +9,7 @@ const Gif = {
     const gif = await Gifs.getGif(id, {});
     const gifObject = gif.data;
 
-    const gifBlock = document.createElement('video');
-    gifBlock.setAttribute('controls', '');
-    gifBlock.setAttribute('autoplay', '');
-    gifBlock.setAttribute('muted', '');
-    gifBlock.setAttribute('loop', '');
-
-    const gifMp4 = document.createElement('source');
-    gifMp4.setAttribute('src', gifObject.images.original.mp4);
-
-    gifBlock.appendChild(gifMp4);
-    gifContainer.appendChild(gifBlock);
+    gifContainer.innerHTML += `<video src="${gifObject.images.original.mp4}" autoplay loop muted></video>`;
 
     const gifInfo = document.createElement('div');
     gifInfo.setAttribute('class', 'text-center');
