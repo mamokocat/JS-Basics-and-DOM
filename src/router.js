@@ -3,7 +3,6 @@ import * as Parse from './Utils.js';
 
 class RouteHandler {
   static createRoute(currentUrl, isFirstEntry) {
-    console.log(`router: ${isFirstEntry}`);
     window.history.pushState({}, '', currentUrl);
     RouteHandler.goToRoute(isFirstEntry);
   }

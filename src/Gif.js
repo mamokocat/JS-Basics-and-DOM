@@ -4,16 +4,17 @@ import RouteHandler from './router.js';
 
 const Gif = {
   render: async (isFirstEntry) => {
-    console.log(isFirstEntry);
     const id = Parse.parseGifUrl(window.location.pathname);
     const gifContainer = document.createElement('div');
-    const gifBlock = document.createElement('video');
     const gif = await Gifs.getGif(id, {});
     const gifObject = gif.data;
+
+    const gifBlock = document.createElement('video');
     gifBlock.setAttribute('controls', '');
     gifBlock.setAttribute('autoplay', '');
     gifBlock.setAttribute('muted', '');
     gifBlock.setAttribute('loop', '');
+
     const gifMp4 = document.createElement('source');
     gifMp4.setAttribute('src', gifObject.images.original.mp4);
 
@@ -32,7 +33,7 @@ const Gif = {
     const backButton = document.createElement('input');
     backButton.setAttribute('type', 'button');
     backButton.setAttribute('id', 'back-btn');
-    backButton.setAttribute('value', 'Back to search');
+    backButton.setAttribute('value', 'Okay, let\'s go back');
     backButton.setAttribute('class', 'btn btn-danger mt-1');
     backButton.addEventListener('click', () => {
       if (isFirstEntry) {
