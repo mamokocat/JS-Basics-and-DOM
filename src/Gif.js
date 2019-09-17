@@ -24,7 +24,7 @@ const Gif = {
     backButton.setAttribute('type', 'button');
     backButton.setAttribute('id', 'back-btn');
     backButton.setAttribute('value', 'Okay, let\'s go back');
-    backButton.setAttribute('class', 'btn btn-danger mt-1');
+    backButton.setAttribute('class', 'btn btn-danger mt-3');
     backButton.addEventListener('click', () => {
       RouteHandler.goBack();
     });

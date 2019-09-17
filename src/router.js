@@ -2,10 +2,9 @@ import Navbar from './Navbar.js';
 import * as Parse from './Parse.js';
 
 class RouteHandler {
-  static goToRoute(currentUrl, isFirstEntry) {
-    console.log(`prev: ${window.location.href}`);
-    window.history.pushState({ prevUrl: window.location.href }, '', currentUrl);
-    RouteHandler.createPage(isFirstEntry);
+  static goToRoute(currentUrl) {
+    window.history.pushState({ previousUrl: window.location.href }, '', currentUrl);
+    RouteHandler.createPage();
   }
 
   static addRoutes(_routes) {
@@ -27,7 +26,7 @@ class RouteHandler {
   }
 
   static goBack() {
-    if (window.location.href === window.history.state.prevUrl) {
+    if (window.location.href === window.history.state.previousUrl) {
       RouteHandler.goToRoute('/');
     } else {
       window.history.back();

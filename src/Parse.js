@@ -28,15 +28,10 @@ export function getGifUrl(pathname) {
   return paths[paths.length - 1];
 }
 
-export function createSearchQuery(query) {
-  return `/search?q=${query}`;
-}
-
 export default {
   getApiQuery,
   getSearchQuery,
   parseSearchQuery,
   getResourse,
   getGifUrl,
-  createSearchQuery,
 };

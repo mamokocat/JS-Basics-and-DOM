@@ -27,7 +27,7 @@ const SearchForm = {
     searchForm.appendChild(searchButton);
 
     searchButton.addEventListener('click', () => {
-      RouteHandler.goToRoute(Parse.createSearchQuery(searchInput.value));
+      RouteHandler.goToRoute(Parse.getSearchQuery(searchInput.value));
     });
 
     if (label) {
