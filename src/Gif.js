@@ -1,10 +1,10 @@
 import * as Gifs from './api.js';
-import * as Parse from './Utils.js';
+import * as Parse from './Parse.js';
 import RouteHandler from './router.js';
 
 const Gif = {
-  render: async (isFirstEntry) => {
-    const id = Parse.parseGifUrl(window.location.pathname);
+  render: async () => {
+    const id = Parse.getGifUrl(window.location.pathname);
     const gifContainer = document.createElement('div');
     const gif = await Gifs.getGif(id, {});
     const gifObject = gif.data;
@@ -26,11 +26,7 @@ const Gif = {
     backButton.setAttribute('value', 'Okay, let\'s go back');
     backButton.setAttribute('class', 'btn btn-danger mt-1');
     backButton.addEventListener('click', () => {
-      if (isFirstEntry) {
-        RouteHandler.createRoute('/');
-      } else {
-        window.history.back();
-      }
+      RouteHandler.goBack();
     });
 
     gifInfo.appendChild(backButton);

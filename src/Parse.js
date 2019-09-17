@@ -18,16 +18,25 @@ export function parseSearchQuery() {
   return value.split('=')[1];
 }
 
-export function parsePathname(pathname) {
+export function getResourse(pathname) {
   const paths = pathname.split('/');
   return paths[1];
 }
 
-export function parseGifUrl(pathname) {
+export function getGifUrl(pathname) {
   const paths = pathname.split('/');
   return paths[paths.length - 1];
 }
 
+export function createSearchQuery(query) {
+  return `/search?q=${query}`;
+}
+
 export default {
-  getApiQuery, getSearchQuery, parseSearchQuery, parsePathname, parseGifUrl,
+  getApiQuery,
+  getSearchQuery,
+  parseSearchQuery,
+  getResourse,
+  getGifUrl,
+  createSearchQuery,
 };

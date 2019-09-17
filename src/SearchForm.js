@@ -1,4 +1,5 @@
 import RouteHandler from './router.js';
+import * as Parse from './Parse.js';
 
 const SearchForm = {
   render: (text, label) => {
@@ -26,7 +27,7 @@ const SearchForm = {
     searchForm.appendChild(searchButton);
 
     searchButton.addEventListener('click', () => {
-      RouteHandler.createRoute(`/search?q=${searchInput.value}`);
+      RouteHandler.goToRoute(Parse.createSearchQuery(searchInput.value));
     });
 
     if (label) {

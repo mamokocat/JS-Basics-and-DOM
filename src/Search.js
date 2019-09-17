@@ -1,5 +1,5 @@
 import * as Gifs from './api.js';
-import * as Parse from './Utils.js';
+import * as Parse from './Parse.js';
 import SearchForm from './SearchForm.js';
 import RouteHandler from './router.js';
 
@@ -39,7 +39,7 @@ const Search = {
 
       gifLink.addEventListener('click', (event) => {
         event.preventDefault();
-        RouteHandler.createRoute(gifLink.href);
+        RouteHandler.goToRoute(gifLink.href);
       });
       searchResponce.appendChild(gifLink);
     });
@@ -69,7 +69,7 @@ const Search = {
 
         gifLink.addEventListener('click', (event) => {
           event.preventDefault();
-          RouteHandler.createRoute(gifLink.href);
+          RouteHandler.goToRoute(gifLink.href);
         });
         searchResponce.appendChild(gifLink);
       });

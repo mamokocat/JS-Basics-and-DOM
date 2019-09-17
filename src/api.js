@@ -1,4 +1,4 @@
-import * as parse from './Utils.js';
+import * as parse from './Parse.js';
 
 export async function getGifs(searchInputValue) {
   const queryParams = {
