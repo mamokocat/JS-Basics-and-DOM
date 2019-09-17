@@ -9,7 +9,6 @@ const Search = {
     searchPage.setAttribute('id', 'search-result');
     const searchInputValue = Parse.parseSearchQuery();
 
-
     const searchLabel = document.createElement('h5');
     searchLabel.setAttribute('id', 'search-result-label');
     searchLabel.setAttribute('class', 'mt-3');
@@ -21,6 +20,7 @@ const Search = {
     searchLabel.appendChild(searchName);
 
     searchPage.appendChild(SearchForm.render(searchInputValue, searchLabel));
+    searchLabel.innerHTML += '":';
 
     const searchResponce = document.createElement('div');
     searchResponce.setAttribute('class', 'mt-3');

@@ -14,7 +14,7 @@ export function getSearchQuery(searchInput) {
 
 export async function getGifs(searchInputValue) {
   const queryParams = {
-    q: searchInputValue,
+    q: encodeURI(searchInputValue),
     limit: '15',
     offset: '0',
     rating: 'G',

@@ -1,6 +1,7 @@
 export function parseSearchQuery() {
-  const value = decodeURI(window.location.search);
-  return value.split('=')[1];
+  let value = decodeURI(window.location.search);
+  value = value.split('=')[1];
+  return value.slice(0, value.length - 1);
 }
 
 export function getResourse(pathname) {
