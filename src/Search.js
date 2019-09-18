@@ -40,7 +40,7 @@ const Search = {
 
       gifLink.addEventListener('click', (event) => {
         event.preventDefault();
-        RouteHandler.goToRoute(gifLink.href);
+        RouteHandler.goToRoute(`/JS-Basics-and-DOM${gifLink.href}`);
       });
       searchResponce.appendChild(gifLink);
     });
@@ -70,7 +70,7 @@ const Search = {
 
         gifLink.addEventListener('click', (event) => {
           event.preventDefault();
-          RouteHandler.goToRoute(gifLink.href);
+          RouteHandler.goToRoute(`/JS-Basics-and-DOM${gifLink.href}`);
         });
         searchResponce.appendChild(gifLink);
       });
