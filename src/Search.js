@@ -23,6 +23,7 @@ const Search = {
     searchLabel.innerHTML += '":';
 
     const searchResponce = document.createElement('div');
+    searchResponce.setAttribute('id', 'search-responce');
     searchResponce.setAttribute('class', 'mt-3');
     const gifs = await Gifs.getGifs(searchInputValue);
 
