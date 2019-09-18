@@ -21,7 +21,9 @@ class RouteHandler {
     const request = Parse.getResourse(window.location.pathname);
     const page = this.routes[request] ? this.routes[request] : this.routes.error;
     pageContainer.innerHTML = '';
-    pageContainer.appendChild(await page.render());
+    const newPage = await page.render();
+    console.dir(newPage);
+    pageContainer.appendChild(newPage);
   }
 
   static goBack() {
