@@ -9,7 +9,7 @@ export function getQuery(queryParams) {
 }
 
 export function getSearchQuery(searchInput) {
-  return `/search${getQuery({ q: searchInput })}`;
+  return `/JS-Basics-and-DOM/search${getQuery({ q: searchInput })}`;
 }
 
 export async function getGifs(searchInputValue) {
