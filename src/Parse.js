@@ -6,7 +6,8 @@ export function parseSearchQuery() {
 
 export function getResourse(pathname) {
   const paths = pathname.split('/');
-  return paths[1];
+  console.dir(paths);
+  return paths[2];
 }
 
 export function getGifUrl(pathname) {
