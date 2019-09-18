@@ -5,7 +5,7 @@ import Error404 from './Error404.js';
 import RouteHandler from './router.js';
 
 const routes = {
-  'JS-Basics-and-DOM': Home,
+  '': Home,
   search: Search,
   gif: Gif,
   error: Error404,
