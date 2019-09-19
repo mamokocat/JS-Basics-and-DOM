@@ -19,5 +19,4 @@ window.onload = () => {
 
 parent.window.onpopstate = () => {
   RouteHandler.createPage();
-  console.log('back/forward');
 };
