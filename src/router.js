@@ -30,7 +30,7 @@ class RouteHandler {
     if (parent.window.location.href === parent.window.history.state.previousUrl) {
       RouteHandler.goToRoute('/JS-Basics-and-DOM/');
     } else {
-      window.history.back();
+      parent.window.history.back();
     }
   }
 }
