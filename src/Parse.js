@@ -4,11 +4,9 @@ export function parseSearchQuery() {
   return value.slice(0, value.length - 1);
 }
 
-export function getResourse(pathname) {
-  console.log(`pathname: ${pathname}`);
+export function getResourse() {
+  const pathname = window.location.pathname;
   const paths = pathname.split('/');
-  console.log(`paths: ${paths}`);
-  console.log(`path: ${paths[2]}`);
   return paths[2];
 }
 
