@@ -2,11 +2,9 @@
 <head>
   <meta charset="utf-8">
   <script type="text/javascript">
-  const url = document.URL;
-  window.location.pathname = 'index.html';
-  window.location.href = url;
+  document.getElementById('container').innerHTML = '<object type="text/html" data="index.html" ></object>';
   </script>
 </head>
 <body>
-  
+  <div class="container"></div>
 </body>
