@@ -22,7 +22,6 @@ class RouteHandler {
     const page = this.routes[request] ? this.routes[request] : this.routes.error;
     pageContainer.innerHTML = '';
     const newPage = await page.render();
-    console.dir(newPage);
     pageContainer.appendChild(newPage);
   }
 

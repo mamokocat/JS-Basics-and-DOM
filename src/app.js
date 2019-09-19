@@ -18,5 +18,7 @@ window.onload = () => {
 };
 
 window.onpopstate = () => {
-  RouteHandler.createPage();
+  const url = window.location.href;
+  window.location.href = 'https://mamok0.github.io/JS-Basics-and-DOM/';
+  RouteHandler.goToRoute(url);
 };
