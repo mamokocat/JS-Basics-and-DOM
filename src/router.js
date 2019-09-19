@@ -18,7 +18,8 @@ class RouteHandler {
       header.innerHTML = await Navbar.render();
     }
 
-    const request = Parse.getResourse(window.location.pathname);
+    const request = Parse.getResourse();
+    console.log(request);
     const page = this.routes[request] ? this.routes[request] : this.routes.error;
     pageContainer.innerHTML = '';
     const newPage = await page.render();

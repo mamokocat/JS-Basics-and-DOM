@@ -5,7 +5,7 @@ export function parseSearchQuery() {
 }
 
 export function getResourse() {
-  const pathname = window.location.pathname;
+  const pathname = parent.window.location.pathname;
   const paths = pathname.split('/');
   return paths[2];
 }
