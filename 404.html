@@ -7,9 +7,7 @@
 </head>
 <body>;
   <script type="text/javascript">
-    document.body.innerHTML = '<iframe src="index.html"></iframe>';
-    document.body.style.height = '900';
-    document.body.style.width = '100%';
-    document.body.style.margin = '0';
+    localStorage.setItem('path', window.location.href);
+    window.location = '/JS-Basics-and-DOM/';
   </script>
 </body>

@@ -14,9 +14,12 @@ const routes = {
 RouteHandler.addRoutes(routes);
 
 window.onload = () => {
-  RouteHandler.goToRoute(parent.window.location.href);
+  if (localStorage.path) {
+    window.history.replaceState({}, '', localStorage.path);
+  }
+  RouteHandler.goToRoute(window.location.href);
 };
 
-parent.window.onpopstate = () => {
+window.onpopstate = () => {
   RouteHandler.createPage();
 };
