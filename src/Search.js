@@ -30,7 +30,7 @@ const Search = {
     gifs.data.forEach((gif) => {
       const gifLink = document.createElement('a');
       gifLink.setAttribute('id', 'gif');
-      gifLink.setAttribute('href', `/gif/${gif.id}`);
+      gifLink.setAttribute('href', `/JS-Basics-and-DOM/gif/${gif.id}`);
 
       const gifImg = document.createElement('img');
       gifImg.setAttribute('src', `${gif.images.fixed_height_small.url}`);
@@ -60,7 +60,7 @@ const Search = {
       moreGifs.data.forEach((gif) => {
         const gifLink = document.createElement('a');
         gifLink.setAttribute('id', 'gif');
-        gifLink.setAttribute('href', `/gif/${gif.id}`);
+        gifLink.setAttribute('href', `/JS-Basics-and-DOM/gif/${gif.id}`);
 
         const gifImg = document.createElement('img');
         gifImg.setAttribute('src', `${gif.images.fixed_height_small.url}`);
