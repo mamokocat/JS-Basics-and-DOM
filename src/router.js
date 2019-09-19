@@ -3,7 +3,7 @@ import * as Parse from './Parse.js';
 
 class RouteHandler {
   static goToRoute(currentUrl) {
-    window.history.pushState({ previousUrl: window.location.href }, '', currentUrl);
+    window.history.pushState({ previousUrl: parent.window.location.href }, '', currentUrl);
     RouteHandler.createPage();
   }
 
