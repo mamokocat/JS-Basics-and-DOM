@@ -16,6 +16,7 @@ RouteHandler.addRoutes(routes);
 window.onload = () => {
   if (localStorage.path) {
     window.history.replaceState({}, '', localStorage.path);
+    window.localStorage.removeItem('path');
   }
   RouteHandler.goToRoute(window.location.href);
 };
