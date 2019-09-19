@@ -4,7 +4,7 @@ import RouteHandler from './router.js';
 
 const Gif = {
   render: async () => {
-    const id = Parse.getGifUrl(window.location.pathname);
+    const id = Parse.getGifUrl();
     const gifContainer = document.createElement('div');
     const gif = await Gifs.getGif(id, { api_key: 'Oku2KgMLfkiQB8ws3zBwc5BLDSQHvzk2' });
     const gifObject = gif.data;
