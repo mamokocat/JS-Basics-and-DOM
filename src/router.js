@@ -19,10 +19,11 @@ class RouteHandler {
     }
 
     const request = Parse.getResourse(window.location.pathname);
+    console.log(request);
     const page = this.routes[request] ? this.routes[request] : this.routes.error;
     pageContainer.innerHTML = '';
     const newPage = await page.render();
-    console.log(newPage);
+
     pageContainer.appendChild(newPage);
   }
 
