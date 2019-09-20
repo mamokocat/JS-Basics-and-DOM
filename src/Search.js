@@ -46,36 +46,40 @@ const Search = {
     });
 
     searchPage.appendChild(searchResponce);
+    
+    if (document.getElementsByTagName('img').length > 0) {
+      const moreButton = document.createElement('input');
+      moreButton.setAttribute('type', 'button');
+      moreButton.setAttribute('id', 'more-btn');
+      moreButton.setAttribute('value', 'More gifs!');
+      moreButton.setAttribute('class', 'btn btn-success mt-2 mb-4');
+      searchPage.appendChild(moreButton);
 
-    const moreButton = document.createElement('input');
-    moreButton.setAttribute('type', 'button');
-    moreButton.setAttribute('id', 'more-btn');
-    moreButton.setAttribute('value', 'More gifs!');
-    moreButton.setAttribute('class', 'btn btn-success mt-2 mb-4');
-    searchPage.appendChild(moreButton);
+      moreButton.addEventListener('click', async () => {
+        const gifsAmount = document.getElementsByTagName('img').length;
+        const moreGifs = await Gifs.getMoreGifs({ searchInputValue, gifsAmount });
+        moreGifs.data.forEach((gif) => {
+          const gifLink = document.createElement('a');
+          gifLink.setAttribute('id', 'gif');
+          gifLink.setAttribute('href', `/JS-Basics-and-DOM/gif/${gif.id}`);
 
-    moreButton.addEventListener('click', async () => {
-      const gifsAmount = document.getElementsByTagName('img').length;
-      const moreGifs = await Gifs.getMoreGifs({ searchInputValue, gifsAmount });
-      moreGifs.data.forEach((gif) => {
-        const gifLink = document.createElement('a');
-        gifLink.setAttribute('id', 'gif');
-        gifLink.setAttribute('href', `/JS-Basics-and-DOM/gif/${gif.id}`);
+          const gifImg = document.createElement('img');
+          gifImg.setAttribute('src', `${gif.images.fixed_height_small.url}`);
+          gifImg.setAttribute('alt', `${gif.title}`);
+          gifImg.setAttribute('class', 'm-1 img-thumbnail');
+          gifLink.appendChild(gifImg);
 
-        const gifImg = document.createElement('img');
-        gifImg.setAttribute('src', `${gif.images.fixed_height_small.url}`);
-        gifImg.setAttribute('alt', `${gif.title}`);
-        gifImg.setAttribute('class', 'm-1 img-thumbnail');
-        gifLink.appendChild(gifImg);
-
-        gifLink.addEventListener('click', (event) => {
-          event.preventDefault();
-          RouteHandler.goToRoute(gifLink.href);
+          gifLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            RouteHandler.goToRoute(gifLink.href);
+          });
+          searchResponce.appendChild(gifLink);
         });
-        searchResponce.appendChild(gifLink);
       });
-    });
-
+    } else { 
+      const no_results = document.createElement('h4');
+      no_results.innerText = 'No results :(';
+    }
     return searchPage;
   },
 };
