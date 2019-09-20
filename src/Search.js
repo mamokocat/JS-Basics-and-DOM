@@ -47,7 +47,6 @@ const Search = {
 
     searchPage.appendChild(searchResponce);
     
-    if (document.getElementsByTagName('img').length > 0) {
       const moreButton = document.createElement('input');
       moreButton.setAttribute('type', 'button');
       moreButton.setAttribute('id', 'more-btn');
@@ -76,11 +75,7 @@ const Search = {
           searchResponce.appendChild(gifLink);
         });
       });
-    } else { 
-      const no_results = document.createElement('h4');
-      no_results.innerText = 'No results :(';
-      searchPage.appendChild(no_results);
-    }
+
     return searchPage;
   },
 };
