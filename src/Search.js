@@ -79,6 +79,7 @@ const Search = {
     } else { 
       const no_results = document.createElement('h4');
       no_results.innerText = 'No results :(';
+      searchPage.appendChild(no_results);
     }
     return searchPage;
   },
