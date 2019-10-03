@@ -26,6 +26,14 @@ const Search = {
     searchResponce.setAttribute('id', 'search-responce');
     searchResponce.setAttribute('class', 'mt-3');
     const gifs = await Gifs.getGifs(searchInputValue);
+    
+    if (gifs.data.length === 0) {
+      const noResultsLabel = document.createElement('h3');
+      noResultsLabel.innerText = 'No results :(';
+      searchResponce.appendChild(noResultsLabel);
+      searchPage.appendChild(searchResponce);
+      return searchPage;
+    }
 
     gifs.data.forEach((gif) => {
       const gifLink = document.createElement('a');
